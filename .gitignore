@@ -1,0 +1,20 @@
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+*.sqlite3
+
+
+# venv folder #
+###############
+mySiteDPvenv/*
+
+# Note Folder #
+###############
+Learning\ Notes/*
+Some\ Notes.txt
+
+# Project Settings #
+####################
+mySiteDP/*
