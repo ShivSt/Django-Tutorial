@@ -1,4 +1,4 @@
-# Some basic references
+# Some basic references ✨
 
 ## models :
 
@@ -35,7 +35,7 @@ templates are html pages which will be displayed by the browser. Here your desig
 
 ## styling with css :
 
-All the css are to be imported in templates. Django generaly look for the css in 'your app'/static directory. So place them there. Since other apps in your project can have same css name. So, better use "static/app-name/css-name"
+All the css are to be imported in templates. Django generaly look for the css in 'your app'/static directory. So place them there. Since other apps in your project can have same css name. So, better use "static/app-name/css/css-name"
 
 We can use material design css from materializecss.com or other free site
 it is free and easy to configure.
