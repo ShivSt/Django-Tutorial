@@ -15,10 +15,8 @@
         <!-- Used for material design of your page from materializecss.com-->
         <!-- Compiled and minified CSS -->
         <link href="{% static 'mainApp/css/materialize.css' %}" rel='stylesheet'/>
-        
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  <!--link for materialized icons -->
+
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -47,9 +45,23 @@
             {% block content %}
             {%endblock%}
         </div>
+
+
+
+
+
+        <!-- Scripts sections -->
+
+        <!-- Compiled and minified JavaScript for materialize design -->
+        <script src="{% static 'mainApp/js/bin/materialize.js' %}"></script>
+
+        <!-- Prism JS -->
+        <script src="{% static 'tinymce/js/prism.js' %}"></script>
+
+        <script>M.AutoInit();</script>
+        
     </body>
 
-<script src="{% static 'tinymce/js/prism.js' %}"></script>
-<script>M.AutoInit();</script>
+    
 
 </html>
