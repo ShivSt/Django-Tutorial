@@ -1,0 +1,15 @@
+{% extends "mainApp/header.html" %}
+
+
+{% block content %}
+
+    <h5 class='heading'>Please provide below required details to add a Series </h5>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <button class="waves-effect waves-light btn" type="submit">Save</button>
+    </form>
+    
+{% endblock %}

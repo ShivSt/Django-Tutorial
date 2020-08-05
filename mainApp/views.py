@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Tutorial, TutorialCategory, TutorialSeries
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .forms import NewUserForm
+from .forms import NewUserForm, TutorialForm, TutorialCategoryForm, TutorialSeriesForm
 from django.contrib import messages
 # Create your views here.
 #A view function for a page
@@ -36,7 +36,7 @@ def single_slug(request, single_slug):
         this_tutorial_index = list(tutorials_from_series).index(this_tutorial)
 
         return render(request,
-                      "mainApp/tutorial.html",
+                      template_name="mainApp/tutorial.html",
                       context={"tutorial":this_tutorial,
                                "sidebar": tutorials_from_series,
                                "this_tut_idx": this_tutorial_index}
@@ -47,12 +47,64 @@ def single_slug(request, single_slug):
 
 
 
-
 def homepage(request):
     return render(request=request,
                 template_name="mainApp/categories.html",
                 context={"categories": TutorialCategory.objects.all})
 
+
+def add_new_tutorial(request):
+
+    if request.method == "POST":
+        form = TutorialForm(request.POST)
+        if form.is_valid():
+            tutorial = form.save()
+            messages.info(request, f"Your tutorial #{tutorial.tutorial_title} is added")
+            return redirect("mainApp:homepage")
+        else:
+            for msg in form.errors:
+                messages.error(request, f"{msg}: {form.errors[msg]}")
+
+    form = TutorialForm
+    return render(request=request,
+                template_name="mainApp/inputForms/addTutorial.html",
+                context={"form": form }) 
+
+
+def add_new_tutorial_category(request):
+
+    if request.method == "POST":
+        form = TutorialCategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.info(request, f"Your tutorial Category is added")
+            return redirect("mainApp:homepage")
+        else:
+            for msg in form.errors:
+                messages.error(request, f"{msg}: {form.errors[msg]}")
+
+    form = TutorialCategoryForm
+    return render(request=request,
+                template_name="mainApp/inputForms/addCategory.html",
+                context={"form": form }) 
+
+
+def add_new_tutorial_series(request):
+
+    if request.method == "POST":
+        form = TutorialSeriesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.info(request, f"Your tutorial series is added")
+            return redirect("mainApp:homepage")
+        else:
+            for msg in form.errors:
+                messages.error(request, f"{msg}: {form.errors[msg]}")
+
+    form = TutorialSeriesForm
+    return render(request=request,
+                template_name="mainApp/inputForms/addSeries.html",
+                context={"form": form }) 
 
 
 def register(request):
@@ -76,10 +128,12 @@ def register(request):
                 template_name="mainApp/register.html",
                 context={"form":form})
 
+
 def logout_request(request):
     logout(request)
     messages.info(request, "Logged out successfully")
     return redirect("mainApp:homepage")
+
 
 def login_request(request):
 

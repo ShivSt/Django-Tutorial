@@ -29,6 +29,17 @@
                         </li>
                     {% endif %}
                 {% endfor %}
+                        <li>
+                            <br>
+                            <div class="center">
+                                <a href="{% url 'mainApp:addTutorial' %}">
+                                    <button class="btn-floating btn-large waves-effect waves-light red" >
+                                        <i class="material-icons">&plus;</i>
+                                    </button>
+                                </a>    
+                            </div>
+                            <div class="center"><b>Add a new tutorial</b></div>
+                        </li>
             </ul>
         </div>
 

@@ -1,50 +1,55 @@
-<head>
-    <!-- Te purpose of header.html is it will contain the common objects from most pages
-        eg. nav bar, footer, etc which they can extends
-        It will not include any unique data of any page, 
-        they will be placed where block content is specified
-        on this page
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <!-- Te purpose of header.html is it will contain the common objects from most pages
+            eg. nav bar, footer, etc which they can extends
+            It will not include any unique data of any page, 
+            they will be placed where block content is specified
+            on this page
+        -->
+
+        {% load static %}
+        <link href="{% static 'tinymce/css/prism.css' %}" rel='stylesheet'/>
+
+        <!-- Used for material design of your page from materializecss.com-->
+        <!-- Compiled and minified CSS -->
+        <link href="{% static 'mainApp/css/materialize.css' %}" rel='stylesheet'/>
+        
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    </head>
+
+    <body>
+    <!--     
+        <h2>Normal design</h2>
+        {% for tut in tutorials %}
+            <p>{{tut.tutorial_title}}</p>
+            <p>{{tut.tutorial_published}}</p>
+            <p>{{tut.tutorial_content | safe}}</p>
+            <br><br>
+        {% endfor %}
+
+        <h2>materialized design </h2> 
     -->
-
-    {% load static %}
-    <link href="{% static 'tinymce/css/prism.css' %}" rel='stylesheet'/>
-
-    <!-- Used for material design of your page from materializecss.com-->
-    <!-- Compiled and minified CSS -->
-    <link href="{% static 'mainApp/css/materialize.css' %}" rel='stylesheet'/>
-    
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    
-
-</head>
-
-<body>
-<!--     
-    <h2>Normal design</h2>
-    {% for tut in tutorials %}
-        <p>{{tut.tutorial_title}}</p>
-        <p>{{tut.tutorial_published}}</p>
-        <p>{{tut.tutorial_content | safe}}</p>
-        <br><br>
-    {% endfor %}
-
-    <h2>materialized design </h2> 
--->
-    
-    {% include "mainApp/includes/navbar.html" %}
-    {% include "mainApp/includes/messages.html" %}
-    
-    <!-- the place where the unique content from child page will sit-->
-    <div class="container">
-        <br/>
-        {% block content %}
-        {%endblock%}
-    </div>
-</body>
+        
+        {% include "mainApp/includes/navbar.html" %}
+        {% include "mainApp/includes/messages.html" %}
+        
+        <!-- the place where the unique content from child page will sit-->
+        <div class="container">
+            <br/>
+            {% block content %}
+            {%endblock%}
+        </div>
+    </body>
 
 <script src="{% static 'tinymce/js/prism.js' %}"></script>
 <script>M.AutoInit();</script>
+
+</html>
