@@ -2,8 +2,9 @@
 
 {% block content %}
 
-<h5 class='heading'>Please provide below required details to add a tutorial </h5>
 
+<h5 class='heading'>Please provide below required details to add a tutorial </h5>
+<!-- default widget from django -->
 <form method="POST">
     {% csrf_token %}
     {{form.as_p}}
@@ -11,7 +12,7 @@
     <button class="waves-effect waves-light btn" type="submit">Save</button>
 </form>
 
-<!-- for accessing every fields individually
+<!-- for accessing every fields individually 
   <div class="row">
     <form class="col s12" method="POST">
       {% csrf_token %}
@@ -36,7 +37,7 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="content" class="materialize-textarea"></textarea>
+          <textarea id="content" placeholder="Place your tutorial contents here" class="materialize-textarea"></textarea>
           <label for="content">{{form.content}}</label>
         </div>
       </div>
@@ -44,7 +45,7 @@
         <div class="col s12">
           This text will be used for refereing the tutorial in url:
           <div class="input-field inline">
-            <input id="slug" class="validate">
+            <input id="slug" placeholder="Tutorial slug" class="validate">
             <label for="email_inline">{{form.slug}}</label>
             <span class="helper-text" data-error="wrong" data-success="right">Should be small and unique</span>
           </div>
