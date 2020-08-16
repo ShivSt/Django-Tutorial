@@ -1,6 +1,9 @@
-<nav>
+{% load static %}
+<div class="navbar-fixed">
+  <nav>
     <div class="nav-wrapper">
       <a href="/" class="brand-logo">Tutorial</a>
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
         {% if user.is_authenticated %}
@@ -13,4 +16,31 @@
       </ul>
       
     </div>
-</nav>
+  </nav>
+
+</div>
+
+<!-- always keep sidenav outise navar tags in materializecss framework-->
+<ul id="slide-out" class="sidenav">
+  <li><div class="user-view">
+    <div class="background">
+      <img src="{% static 'mainApp/images/random.jpg' %}">
+    </div>
+    <a href="#"><img class="circle" src="{% static 'mainApp/images/random.jpg' %}"></a>
+    <a href="#"><span class="dark-text name">John Doe</span></a>
+    <a href="#"><span class="dark-text email">jdandturk@gmail.com</span></a>
+    </div>
+  </li>
+  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+  <li><a href="/">Home</a></li>
+  {% if user.is_authenticated %}
+    <li><a href="account/">{{user.username}}</a></li>
+    <li><a href="{% url 'mainApp:logout' %}">Logout</a></li>
+  {% else %}
+    <li><a href="{% url 'mainApp:register' %}">Register</a></li>
+    <li><a href="{% url 'mainApp:login' %}">Login</a></li>
+  {% endif %}
+</ul>
+
+
+

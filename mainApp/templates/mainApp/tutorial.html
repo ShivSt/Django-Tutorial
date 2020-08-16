@@ -31,17 +31,28 @@
                 {% endfor %}
                         <li>
                             <br>
-                            <div class="center">
+                            <div class="center-align">
                                 <a href="{% url 'mainApp:addTutorial' %}">
-                                    <button class="btn-floating btn-large waves-effect waves-light red" >
+                                    <button class="btn-floating btn-large waves-effect waves-light red" name="addTutorialBtn">
                                         <i class="material-icons">add</i>
                                     </button>
                                 </a>    
                             </div>
-                            <div class="center"><b>Add a new tutorial</b></div>
+                            <div class="center-align"><b>Add a new tutorial</b></div>
                         </li>
             </ul>
         </div>
 
     </div>
+    <script>
+        (function(){
+            addBtn = document.getElementsByName("addTutorialBtn")[0];
+            addBtn.onmouseover = function(){
+                addBtn.classList.toggle("z-depth-3");
+            }
+            addBtn.onmouseout = function(){
+                addBtn.classList.toggle("z-depth-3");
+            }
+        })();
+    </script>
 {% endblock %}

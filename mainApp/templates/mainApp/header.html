@@ -55,11 +55,15 @@
 
         <!-- Compiled and minified JavaScript for materialize design -->
         <script src="{% static 'mainApp/js/bin/materialize.js' %}"></script>
-
+        
         <!-- Prism JS -->
         <script src="{% static 'tinymce/js/prism.js' %}"></script>
 
+        <!-- Intialize all materializecss js with default values -->
         <script>M.AutoInit();</script>
+
+        <!-- My scripts -->
+        <script src="{% static 'mainApp/js/myjs/myscript.js' %}"></script>
         
     </body>
 
