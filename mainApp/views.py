@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Tutorial, TutorialCategory, TutorialSeries
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .forms import NewUserForm, TutorialForm, TutorialCategoryForm, TutorialSeriesForm
+from .forms import  TutorialForm, TutorialCategoryForm, TutorialSeriesForm
 from django.contrib import messages
 # Create your views here.
 #A view function for a page
@@ -49,7 +49,7 @@ def single_slug(request, single_slug):
 
 def homepage(request):
     return render(request=request,
-                template_name="mainApp/categories.html",
+                template_name="mainApp/home.html",
                 context={"categories": TutorialCategory.objects.all})
 
 
@@ -110,7 +110,7 @@ def add_new_tutorial_series(request):
 def register(request):
 
     if request.method == "POST":
-        form = NewUserForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
@@ -123,7 +123,7 @@ def register(request):
                 messages.error(request, f"{msg}: {form.error_messages[msg]}")
 
 
-    form = NewUserForm
+    form = UserCreationForm
     return render(request=request,
                 template_name="mainApp/register.html",
                 context={"form":form})

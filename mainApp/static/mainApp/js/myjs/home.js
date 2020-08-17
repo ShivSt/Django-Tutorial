@@ -1,9 +1,9 @@
-
 /* Use materializecss js functions/initializations only if you want to add any
 options other than default. As default intialization for all the materializecss
 components have done in header template with <script>M.AutoInit();</script> */
 
-// categories: Add floating button options
+
+// Homepage: Add floating button options
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.fixed-action-btn');
     var options = {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.FloatingActionButton.init(elems, options);
 });
 
-// categories: Tooltip options for buttons
+// HomePage: Tooltip options for buttons
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.tooltipped');
     const options = {

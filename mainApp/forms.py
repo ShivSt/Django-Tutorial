@@ -3,12 +3,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Tutorial, TutorialSeries, TutorialCategory
 
+"""
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=False)
 
     class Meta:
         model = User
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username", "email", "password1", "password2",)
 
     def save(self, commit=True):
         user = super(NewUserForm, self).save(commit=False)
@@ -16,7 +17,7 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
-
+"""
 
 class TutorialForm(forms.Form):    # We extends forms.ModelForm for easy form
     """

@@ -24,20 +24,8 @@
     </head>
 
     <body>
-    <!--     
-        <h2>Normal design</h2>
-        {% for tut in tutorials %}
-            <p>{{tut.tutorial_title}}</p>
-            <p>{{tut.tutorial_published}}</p>
-            <p>{{tut.tutorial_content | safe}}</p>
-            <br><br>
-        {% endfor %}
-
-        <h2>materialized design </h2> 
-    -->
-        
+            
         {% include "mainApp/includes/navbar.html" %}
-        {% include "mainApp/includes/messages.html" %}
         
         <!-- the place where the unique content from child page will sit-->
         <div class="container">
@@ -46,24 +34,29 @@
             
             {%endblock%}
         </div>
+    
 
 
 
 
+        <!-- Common Scripts sections -->
 
-        <!-- Scripts sections -->
+            <!-- Compiled and minified JavaScript for materialize design -->
+            <script src="{% static 'mainApp/js/bin/materialize.js' %}" ></script>
+            
+            <!-- Prism JS -->
+            <script src="{% static 'tinymce/js/prism.js' %}"></script>
 
-        <!-- Compiled and minified JavaScript for materialize design -->
-        <script src="{% static 'mainApp/js/bin/materialize.js' %}"></script>
-        
-        <!-- Prism JS -->
-        <script src="{% static 'tinymce/js/prism.js' %}"></script>
+            <!-- Intialize all materializecss js with default values -->
+            <script>M.AutoInit();</script>
 
-        <!-- Intialize all materializecss js with default values -->
-        <script>M.AutoInit();</script>
+            <!-- toast messages script-->
+            {% include "mainApp/includes/messages.html" %}
 
-        <!-- My scripts -->
-        <script src="{% static 'mainApp/js/myjs/myscript.js' %}"></script>
+        <!-- block for unique js of each page -->
+        {% block js %}
+            
+        {%endblock%}
         
     </body>
 

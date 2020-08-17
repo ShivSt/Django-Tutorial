@@ -1,5 +1,6 @@
 {% extends "mainApp/header.html" %}
 
+{% load static %}
 
 {% block content %}
     <div class="row">   <!--class row specify that we are changing our view in terms of rows and colmns-->
@@ -44,15 +45,10 @@
         </div>
 
     </div>
-    <script>
-        (function(){
-            addBtn = document.getElementsByName("addTutorialBtn")[0];
-            addBtn.onmouseover = function(){
-                addBtn.classList.toggle("z-depth-3");
-            }
-            addBtn.onmouseout = function(){
-                addBtn.classList.toggle("z-depth-3");
-            }
-        })();
-    </script>
+    
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static 'mainApp/js/myjs/tutorial.js' %}"></script>
 {% endblock %}
