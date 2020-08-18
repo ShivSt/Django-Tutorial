@@ -3,6 +3,13 @@
   <nav>
     <div class="nav-wrapper">
       <a href="/" class="brand-logo">Tutorial</a>
+      <form class="left" action="{% url 'mainApp:search' %}" method="GET" value="{{request.GET.q}}">
+        <div class="input-field">
+            <input type="text" id="searchInput" name="q" value="{{request.GET.q}}">
+            <label class="label-icon" for="searchInput"><i class="material-icons">search</i>
+            <i class="material-icons">close</i> </label>
+        </div>
+      </form>
       <a href="#!" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/">Home</a></li>
@@ -13,7 +20,9 @@
             <li><a href="{% url 'mainApp:register' %}">Register</a></li>
             <li><a href="{% url 'mainApp:login' %}">Login</a></li>
         {% endif %}
+ 
       </ul>
+      
       
     </div>
   </nav>

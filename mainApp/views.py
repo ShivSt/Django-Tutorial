@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Tutorial, TutorialCategory, TutorialSeries
+from django.db.models import Q
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from .forms import  TutorialForm, TutorialCategoryForm, TutorialSeriesForm
@@ -156,4 +157,33 @@ def login_request(request):
     return render(request=request,
                 template_name="mainApp/login.html",
                 context={"form":form})
-    
+
+
+def search(request):
+
+    if request.method == "GET":
+        query = request.GET.get('q')
+        submitbutton = request.GET.get('submit')
+        submitbutton = 'Search' # will be used if any search button is placed
+        if query is not None:
+            # create a custom lookup to be used for filter
+            lookups = Q(tutorial_title__icontains=query) | Q(tutorial_content__icontains=query)
+            results = Tutorial.objects.filter(lookups).distinct()
+            # send matching objects to result page
+            context={'results': results,
+                     'submitbutton': submitbutton}
+            if len(results)>0:
+                messages.info(request, f"List of matched Tutorials")
+            else:
+                messages.warning(request, f"No results with searched title")
+            return render(request,
+                        template_name="mainApp/search.html",
+                        context=context)
+        else:
+            messages.error(request, f"Provide a query to search")
+            return render(request,
+                        template_name="mainApp/search.html",)
+    else:
+        return render(request,
+                        template_name="mainApp/search.html",)
+

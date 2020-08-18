@@ -12,5 +12,6 @@ urlpatterns = [
     path('addTutorial/', views.add_new_tutorial, name='addTutorial'),
     path('addCategory/', views.add_new_tutorial_category, name='addCategory'),
     path('addSeries/', views.add_new_tutorial_series, name='addSeries'),
+    path('search/', views.search, name='search'),
     path('<single_slug>', views.single_slug, name='single_slug'),
 ]

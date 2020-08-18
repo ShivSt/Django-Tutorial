@@ -68,3 +68,4 @@ class TutorialSeriesForm(forms.ModelForm):
     class Meta:
         model = TutorialSeries
         fields = '__all__'
+
