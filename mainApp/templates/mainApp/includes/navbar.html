@@ -1,5 +1,6 @@
 {% load static %}
 <div class="navbar-fixed">
+  
   <nav>
     <div class="nav-wrapper">
       <a href="/" class="brand-logo">Tutorial</a>
@@ -20,7 +21,8 @@
             <li><a href="{% url 'mainApp:register' %}">Register</a></li>
             <li><a href="{% url 'mainApp:login' %}">Login</a></li>
         {% endif %}
- 
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-trigger" href="#!" data-target="navDropdown">More<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
       
       
@@ -28,6 +30,14 @@
   </nav>
 
 </div>
+
+<!-- Dropdown Structure -->
+<ul id="navDropdown" class="dropdown-content">
+  <li><a href="{% url 'mainApp:search' %}">Edit a Tutorial</a></li>
+  <li><a href="{% url 'mainApp:search' %}">Delete a Tutorial</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
 
 <!-- always keep sidenav outise navar tags in materializecss framework-->
 <ul id="slide-out" class="sidenav">
